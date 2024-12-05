@@ -38,7 +38,7 @@ $ terraform login
                                                            -----
                                                                -
 
-$ terraform.sh init
+$ terraform init
 
 Terraform has been successfully initialized!
 
@@ -46,7 +46,7 @@ You may now begin working with Terraform. Try running "terraform plan" to see
 any changes that are required for your infrastructure. All Terraform commands
 should now work.
 
-$ terraform.sh apply
+$ terraform apply
 Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
 
 ```
