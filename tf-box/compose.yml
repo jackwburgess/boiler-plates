@@ -1,0 +1,16 @@
+services:
+
+  terraform:
+    build: ./build/.
+    environment:
+      - TF_VAR_dd_api_key=${DD_API_KEY}
+      - TF_VAR_dd_app_key=${DD_APP_KEY}
+      - TF_VAR_dd_site=${DD_SITE}
+    container_name: box
+    volumes:
+      - ../conf:/opt/box/terraform # terraform configuration
+      - home:/home/ubuntu
+
+volumes:
+  home:
+    driver: local
