@@ -10,7 +10,7 @@ Terraform Boilerplate for Datadog usage at scale.
 
 
 ```bash
-./terraform.sh loginyes
+./terraform.sh login
 ./terraform.sh init
 ./terraform.sh apply
 
