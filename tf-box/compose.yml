@@ -9,8 +9,4 @@ services:
     container_name: box
     volumes:
       - ../conf:/opt/box/terraform # terraform configuration
-      - home:/home/ubuntu
-
-volumes:
-  home:
-    driver: local
+      - ./home:/home/ubuntu
