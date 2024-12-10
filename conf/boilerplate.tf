@@ -58,7 +58,7 @@ resource "datadog_service_account_application_key" "app_keys" {
 
 ## LOG INDEXES
 
-# A sample Datadog logs index resource definition.
+# Builds a unique log index per team onboarding to Datadog.
 
 resource "datadog_logs_index" "sample_index" {
   for_each = { for idx, team in data.datadog_team.teams : idx => team }
