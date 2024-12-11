@@ -83,3 +83,23 @@ resource "datadog_logs_index" "sample_index" {
     }
   }
 }
+
+## USAGE MONITORS
+
+resource "datadog_monitor" "Usage_MonitorsAnomaly_Detection" {
+  include_tags = false
+  new_group_delay = 0
+  monitor_thresholds {
+    critical = 1
+    critical_recovery = 0
+  }
+  name = "[Datadog Usage Monitors][Anomaly Detection] The number of Infra hosts is abnormally high"
+  type = "query alert"
+  tags = ["usage-monitor:true"]
+  query = <<EOT
+avg(last_1d):anomalies(avg:datadog.estimated_usage.hosts{*} by {team}.rollup(avg, 300), 'agile', 5, direction='above', interval=300, alert_window='last_1h', count_default_zero='true', seasonality='daily', timezone='utc') >= 1
+EOT
+  message = <<EOT
+The number of Infra Hosts was {{value}} which is abnormally high.
+EOT
+}
