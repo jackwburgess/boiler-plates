@@ -84,7 +84,7 @@ resource "datadog_logs_index" "sample_index" {
   }
 }
 
-## USAGE MONITORS
+## USAGE MONITORS (work in progress)
 
 resource "datadog_monitor" "Usage_MonitorsAnomaly_Detection" {
   include_tags = false
