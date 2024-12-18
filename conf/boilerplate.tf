@@ -1,25 +1,26 @@
 ## TEAMS DECLARATION ##### ##### ##### ##### ##### ##### ##### ##### #####
 
 variable "team_names" {
-  default = ["team1", "team2", "team3", "team4", "team5"]
+  default = ["team-a", "team-b", "team-c", "team-d", "team-e", "team-f", "team-g", "team-h", "team-i", "team-j"]
 }
 
-data "datadog_team" "teams" {
-  count          = length(var.team_names)
-  filter_keyword = var.team_names[count.index]
+resource "datadog_team" "teams" {
+    for_each = toset(var.team_names)
+    name = each.key
+    handle = each.key
+    description = "This is Team ${each.key}"
 }
 
 ## TEAMS RESOURCES CREATION ##### ##### ##### ##### ##### ##### ##### ##### #####
 
-
 ## API KEYS
 
 resource "datadog_api_key" "team_keys" {
-  for_each = { for idx, team in data.datadog_team.teams : idx => team }
 
-  name = "API Key for ${each.value.filter_keyword}"
+  for_each = { for idx, team in datadog_team.teams : idx => team }
+
+  name = "API Key for Team ${each.value.handle}"
 }
-
 
 ## SERVICE ACCOUNTS
 
@@ -37,18 +38,18 @@ resource "datadog_role" "service_accounts_role" {
 
 resource "datadog_service_account" "service_accounts" {
 
-  for_each = { for idx, team in data.datadog_team.teams : idx => team }
+  for_each = { for idx, team in datadog_team.teams : idx => team }
 
-  name  = "${each.value.filter_keyword}-service-account"
-  email = "${each.value.filter_keyword}-service@example.com"
+  name  = "${each.value.handle}-service-account"
+  email = "${each.value.handle}-service@example.com"
 
-  depends_on = [datadog_role.service_accounts_role]
   roles = [datadog_role.service_accounts_role.id]
 
 }
 
 resource "datadog_service_account_application_key" "app_keys" {
 
+    depends_on = [datadog_team.teams]
     for_each = { for idx, sa in datadog_service_account.service_accounts : idx => sa }
     
     service_account_id = each.value.id
@@ -61,32 +62,33 @@ resource "datadog_service_account_application_key" "app_keys" {
 # Builds a unique log index per team onboarding to Datadog.
 
 resource "datadog_logs_index" "sample_index" {
-  for_each = { for idx, team in data.datadog_team.teams : idx => team }
-  name  = "${each.value.filter_keyword}-index"
-  daily_limit = 200000
-  daily_limit_reset {
-    reset_time       = "14:00"
-    reset_utc_offset = "+02:00"
-  }
-  daily_limit_warning_threshold_percentage = 50
-  retention_days                           = 15
-  flex_retention_days                      = 180
-  filter {
-    query = "team:${each.value.handle}"
-  }
-  exclusion_filter {
-    name       = "debug logs"
-    is_enabled = true
-    filter {
-      query       = "status:debug"
-      sample_rate = 1.0
+  for_each = { for idx, team in datadog_team.teams : idx => team }
+    name  = "${each.value.handle}-index"
+    daily_limit = 200000
+    daily_limit_reset {
+      reset_time       = "14:00"
+      reset_utc_offset = "+02:00"
     }
-  }
+    daily_limit_warning_threshold_percentage = 50
+    retention_days                           = 15
+    flex_retention_days                      = 180
+    filter {
+      query = "team:${each.value.handle}"
+    }
+    exclusion_filter {
+      name       = "debug logs"
+      is_enabled = true
+      filter {
+        query       = "status:debug"
+        sample_rate = 1.0
+      }
+    }
 }
 
 ## USAGE MONITORS ##### ##### ##### ##### ##### ##### ##### ##### #####
 
 ## Please comment out any product which you do not currently use
+
 variable "products" {
   default = {
     product-1 = { product_name = "apm_hosts" }
@@ -96,7 +98,6 @@ variable "products" {
     product-5 = { product_name = "asm.traced_invocations" }
     product-6 = { product_name = "asm.vulnerability_oss_host" }
     product-7 = { product_name = "serverless.aws_lambda_functions" }
-    product-8 = { product_name = "serverless.aws_lambda_functions" }
     product-9 = { product_name = "ci_visibility.pipeline.committers" }
     product-10 = { product_name = "ci_visibility.test.committers" }
     product-11 = { product_name = "containers" }
@@ -143,6 +144,10 @@ resource "datadog_monitor" "Usage_Monitors_Anomaly_Detection" {
   query = <<EOT
 avg(last_1d):anomalies(avg:datadog.estimated_usage.${each.value.product_name}{*} by {team}.rollup(avg, 300), 'agile', 5, direction='above', interval=300, alert_window='last_1h', count_default_zero='true', seasonality='daily', timezone='utc') >= 1
 EOT
+  message = <<EOT
+The number of ${each.value.product_name} was {{value}} which is abnormally high.
+EOT
+}
   message = <<EOT
 The number of ${each.value.product_name} was {{value}} which is abnormally high.
 EOT
