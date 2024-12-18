@@ -17,5 +17,5 @@ variable "dd_site" {
 ## OUTPUTS ##### ##### ##### ##### ##### ##### ##### ##### #####
 
 output "team_ids" {
-  value = [for team in data.datadog_team.teams : "${team.name}::${team.id}"]
+  value = [for team in datadog_team.teams : "${team.name}::${team.id}"]
 }
