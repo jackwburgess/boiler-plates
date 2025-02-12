@@ -3,8 +3,7 @@
 The following Onboarding Governance Starter Packs can help customers automate and standarise their Datadog onboarding via Terraform templates. 
 The core concept of the Governance Starter Packs is to provide a repository of assets for common onboarding tasks (see Onboarding Assets section).
 These are typically deployed through a central observability team to enable a faster & more consistent Datadog deployment which follows best practices governance wise. 
-By ensuring customers start their onboarding journey in the correct way (i.e. following the starter packs), we can ensure customers are following good governance standards. 
-The Terraform based starter packs to onboard new Teams in an existing Datadog account.
+The Terraform based starter packs are designed to onboard new Teams in an existing Datadog account.
 
 This repo consists of 
 * a [Terraform Configuration](conf/) - the *boilerplate* per se.
