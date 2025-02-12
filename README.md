@@ -9,7 +9,7 @@ This repo contains:
 * a [Terraform Configuration](conf/) - the onboarding starter pack (*boilerplate*) per se.
 * a [Ubuntu Virtual Machine (Docker)](tf-box/) with Terraform CLI already installed and packaged in it. 
 
-# Onboarding Assets
+## Onboarding Assets
 
 | Terraform Resource                     | Description                                                          |
 |----------------------------------------|----------------------------------------------------------------------|
