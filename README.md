@@ -5,10 +5,6 @@ The core concept of the Governance Starter Packs is to provide a repository of a
 These are typically deployed through a central observability team to enable a faster & more consistent Datadog deployment which follows best practices governance wise. 
 The Terraform based starter packs are designed to onboard new Teams in an existing Datadog account.
 
-This repo contains: 
-* a [Terraform Configuration](conf/) - the onboarding starter pack (*boilerplate*) per se.
-* a [Ubuntu Virtual Machine (Docker)](tf-box/) with Terraform CLI already installed and packaged in it. 
-
 ## Onboarding Assets
 
 | Terraform Resource                     | Description                                                          |
@@ -21,14 +17,14 @@ This repo contains:
 
 ## Get Started
 
-This repo consists of 
+This repo contains: 
 * a [Terraform Configuration](conf/) - the *boilerplate* per se.
 * a [Ubuntu Virtual Machine (Docker)](tf-box/) with Terraform CLI already installed and packaged in it.
+
+Please complete the following steps:
 * Install [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 * Create a [Terraform Cloud account](https://app.terraform.io/session) and [create a token](https://app.terraform.io/app/settings/tokens).
 * Update environment variables [`.env`](.env)
-
 * Update your list of teams in [`conf/boilerplate.tf`](conf/boilerplate.tf)
-
 Then open a Terminal in the dd-tf-boilerplate repo: 
 * alias [terraform.sh](terraform.sh): `alias terraform=./terraform.sh`
