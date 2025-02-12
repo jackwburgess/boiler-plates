@@ -5,7 +5,7 @@ The core concept of the Governance Starter Packs is to provide a repository of a
 These are typically deployed through a central observability team to enable a faster & more consistent Datadog deployment which follows best practices governance wise. 
 The Terraform based starter packs are designed to onboard new Teams in an existing Datadog account.
 
-This repo consists of 
+This repo contains: 
 * a [Terraform Configuration](conf/) - the *boilerplate* per se.
 * a [Ubuntu Virtual Machine (Docker)](tf-box/) with Terraform CLI already installed and packaged in it. 
 
@@ -32,36 +32,3 @@ This repo consists of
 
 Then open a Terminal in the dd-tf-boilerplate repo: 
 * alias [terraform.sh](terraform.sh): `alias terraform=./terraform.sh`
-
-
-```bash
-$ terraform login
-                                          -                                
-                                          -----                           -
-                                          ---------                      --
-                                          ---------  -                -----
-                                           ---------  ------        -------
-                                             -------  ---------  ----------
-                                                ----  ---------- ----------
-                                                  --  ---------- ----------
-   Welcome to HCP Terraform!                       -  ---------- -------
-                                                      ---  ----- ---
-   Documentation: terraform.io/docs/cloud             --------   -
-                                                      ----------
-                                                      ----------
-                                                       ---------
-                                                           -----
-                                                               -
-
-$ terraform init
-
-Terraform has been successfully initialized!
-
-You may now begin working with Terraform. Try running "terraform plan" to see
-any changes that are required for your infrastructure. All Terraform commands
-should now work.
-
-$ terraform apply
-Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
-
-```
