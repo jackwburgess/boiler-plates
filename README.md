@@ -4,6 +4,7 @@
 * The core concept of the Onboarding Starter Packs is to provide a repository of assets for common onboarding tasks.
 * These are typically owned by a central observability team to enable a faster/consistent deployment which follows best practices. 
 * These are designed to assist you onboard & govern new Teams in an existing or new Datadog account.
+* Disclaimer: These are not bulletproof (many of the modules may require customisation to match your specific requirements).
 
 ## Onboarding Assets
 
