@@ -6,7 +6,7 @@ These are typically deployed through a central observability team to enable a fa
 The Terraform based starter packs are designed to onboard new Teams in an existing Datadog account.
 
 This repo contains: 
-* a [Terraform Configuration](conf/) - the *boilerplate* per se.
+* a [Terraform Configuration](conf/) - the onboarding starter pack (*boilerplate*) per se.
 * a [Ubuntu Virtual Machine (Docker)](tf-box/) with Terraform CLI already installed and packaged in it. 
 
 # Onboarding Assets
