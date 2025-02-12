@@ -1,14 +1,30 @@
-# dd-tf-boilerplate
+# Onboarding Starter Packs
 
-A Terraform Boilerplate to onboard new Teams in an existing Datadog account, and create standard assets (service accounts, monitors, log indexes, etc.) for each of them.
+The following Onboarding Governance Starter Packs can help customers automate and standarise their Datadog onboarding via Terraform templates. 
+The core concept of the Governance Starter Packs is to provide a repository of assets for common onboarding tasks (see Onboarding Assets section).
+These are typically deployed through a central observability team to enable a faster & more consistent Datadog deployment which follows best practices governance wise. 
+By ensuring customers start their onboarding journey in the correct way (i.e. following the starter packs), we can ensure customers are following good governance standards. 
+The Terraform based starter packs to onboard new Teams in an existing Datadog account.
 
 This repo consists of 
 * a [Terraform Configuration](conf/) - the *boilerplate* per se.
 * a [Ubuntu Virtual Machine (Docker)](tf-box/) with Terraform CLI already installed and packaged in it. 
 
+# Onboarding Assets
+
+| Terraform Resource                     | Description                                                          |
+|----------------------------------------|----------------------------------------------------------------------|
+| datadog_team                           | Datadog Teams                                                        |
+| datadog_api_key                        | Datadog API Keys                                                     |
+| datadog_application_key                | Datadog API Keys                                                     |
+| datadog_service_account                | Datadog Service Account                                              |
+| datadog_logs_index                     | Datadog Log Index                                                    |
 
 ## Get Started
 
+This repo consists of 
+* a [Terraform Configuration](conf/) - the *boilerplate* per se.
+* a [Ubuntu Virtual Machine (Docker)](tf-box/) with Terraform CLI already installed and packaged in it.
 * Install [Docker Desktop](https://www.docker.com/products/docker-desktop/).
 * Create a [Terraform Cloud account](https://app.terraform.io/session) and [create a token](https://app.terraform.io/app/settings/tokens).
 * Update environment variables [`.env`](.env)
