@@ -2,7 +2,7 @@
 
 * The following Onboarding Starter Packs can help you automate & standarise your Datadog onboarding via Terraform templates. 
 * The core concept of the Onboarding Starter Packs is to provide a repository of assets for common onboarding tasks.
-* These are typically owned by a central observability team to enable a faster/consistent Datadog deployment which follows best practices. 
+* These are typically owned by a central observability team to enable a faster/consistent deployment which follows best practices. 
 * These are designed to assist you onboard & govern new Teams in an existing or new Datadog account.
 
 ## Onboarding Assets
