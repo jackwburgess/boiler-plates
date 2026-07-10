@@ -12,7 +12,7 @@
 |----------------------------------------|----------------------------------------------------------------------|
 | datadog_team                           | Datadog Teams                                                        |
 | datadog_api_key                        | Datadog API Keys                                                     |
-| datadog_application_key                | Datadog API Keys                                                     |
+| datadog_application_key                | Datadog Application Keys                                                     |
 | datadog_service_account                | Datadog Service Account                                              |
 | datadog_logs_index                     | Datadog Log Index                                                    |
 
